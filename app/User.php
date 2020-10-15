@@ -23,8 +23,6 @@ class User extends Authenticatable
         'cedula','name', 'lastname','celular','direccion','email', 
     ];
 
-    
-
     protected $primaryKey = 'cedula';
 
     protected $keyType = 'string';

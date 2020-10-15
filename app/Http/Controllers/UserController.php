@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\user;
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,12 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-        $user= user::all();
-	
-        return response()->json(['data'=>$user,
-            ], 200);
-
+        $user= User::all();	
+        return response()->json(['data' => $user], 200);
     }
 
     /**
@@ -41,7 +37,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
 		$request->validate([
             'cedula'     => 'required|string|min:10|max:10|unique:users,cedula',
             'name'     => 'required|string|max:200',
@@ -50,13 +45,10 @@ class UserController extends Controller
             'direccion'     => 'required|string|max:10',
             'email'     => 'required|string|email',
         ]);
-
-      
         
-        $user=user::create($request->all());
+        $user = User::create($request->all());
 	
-        return response()->json(['data'=>$user,
-            'message' => 'User Creado'], 201);
+        return response()->json(['data'=>$user, 'message' => 'User Creado'], 201);
     }
 
     /**
@@ -67,8 +59,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
-        $user=user::find($id);
+        $user=User::find($id);
 
         if(!$user)
 		{
@@ -79,9 +70,7 @@ class UserController extends Controller
 			])],404);
         }
 
-        return response()->json(['data'=>$user,
-            'message' => 'Usuario encontrado'], 200);
-
+        return response()->json(['data'=>$user, 'message' => 'Usuario encontrado'], 200);
     }
 
     /**
@@ -104,8 +93,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $user=user::find($id);
+        $user=User::find($id);
 
         if(!$user)
 		{
@@ -132,9 +120,7 @@ class UserController extends Controller
 			
 		$user->save();
 
-        return response()->json(['data'=>$user,
-        'message' => 'Usuario actualizado'], 200);
-
+        return response()->json(['data'=>$user,'message' => 'Usuario actualizado'], 200);
     }
 
     /**
@@ -145,8 +131,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $user=user::find($id);
+        $user=User::find($id);
 
         if(!$user)
 		{
@@ -158,9 +143,6 @@ class UserController extends Controller
         }
 
         $user->delete();
-
-        return response()->json([
-        'message' => 'Usuario Eliminado'], 200);
-
+        return response()->json(['message' => 'Usuario Eliminado'], 200);
     }
 }
