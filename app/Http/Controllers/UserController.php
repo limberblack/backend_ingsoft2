@@ -42,7 +42,7 @@ class UserController extends Controller
             'name'     => 'required|string|max:200',
             'lastname'     => 'required|string|max:200',
             'celular'     => 'required|string|min:10|max:10',
-            'direccion'     => 'required|string|max:10',
+            'direccion'     => 'required|string|max:200',
             'email'     => 'required|string|email',
         ]);
         
@@ -108,7 +108,7 @@ class UserController extends Controller
             'name'     => 'required|string|max:200',
             'lastname'     => 'required|string|max:200',
             'celular'     => 'required|string|min:10|max:10',
-            'direccion'     => 'required|string|max:10',
+            'direccion'     => 'required|string|max:200',
             'email'     => 'required|string|email',
         ]);
 

@@ -70,9 +70,7 @@ class ProductoController extends Controller
         $request->validate([
             'name' => 'nullable|string',
             'descripcion' => 'nullable|string',
-            'cantidad' => 'nullable|integer',
-            'precio_c_u' => 'nullable|regex:/^\d*(\.\d{2})?$/',
-            'precio_doce'     => 'nullable|regex:/^\d*(\.\d{2})?$/'
+            'cantidad' => 'nullable|integer'
         ]);
         
         if ( isset($request->name) ) {
